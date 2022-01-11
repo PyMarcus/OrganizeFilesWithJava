@@ -49,6 +49,9 @@ public class OrganizeDirController {
         File dir1 = new File(files.getNome_dir() + "Pdfs");
         File verify;
         File dir3 = new File(files.getNome_dir() + "Zips");
+        File dir2 = new File(files.getNome_dir() + "Imgs");
+        File dir4 = new File(files.getNome_dir() + "MP3s");
+        File dir5 = new File(files.getNome_dir() + "MP4s");
 
         for (String ext : exts) {
             if (dir1.exists()) {
@@ -103,8 +106,90 @@ public class OrganizeDirController {
                 }
 
             }
+            if (dir4.exists()) {
+                for (String itens : create.list()) {
+                    if (itens.contains(ext)) {
+                        if (itens.contains("mp3")) {
+                            verify = new File(files.getNome_dir() + itens);
+                            boolean ok = verify.renameTo(new File(files.getNome_dir() + "MP3s/", verify.getName()));
+                            if (ok) System.out.println(itens + " movido");
+                            else System.out.println(itens + " não movido");
+                        }
+                    }
+                }
+            } else {
+                System.out.println("Diretório não existente...Criando...");
+                Files.createDirectory(Paths.get(files.getNome_dir() + "MP3s"));
+                for (String itens : create.list()) {
+                    if (itens.contains(ext)) {
+                        if (itens.contains("mp3")) {
+                            verify = new File(files.getNome_dir() + itens);
+                            boolean ok = verify.renameTo(new File(files.getNome_dir() + "MP3s/", verify.getName()));
+                            if (ok) System.out.println(itens + " movido");
+                            else System.out.println(itens + " não movido");
+                        }
+                    }
+                }
+            }
+
+
+            if (dir2.exists()) {
+                for (String itens : create.list()) {
+                    if (itens.contains(ext)) {
+                        if (itens.contains("jpg") || itens.contains("img") || itens.contains("jpeg")) {
+                            verify = new File(files.getNome_dir() + itens);
+                            boolean ok = verify.renameTo(new File(files.getNome_dir() + "Imgs/", verify.getName()));
+                            if (ok) System.out.println(itens + " movido");
+                            else System.out.println(itens + " não movido");
+                        }
+                    }
+                }
+            } else {
+                System.out.println("Diretório não existente...Criando...");
+                Files.createDirectory(Paths.get(files.getNome_dir() + "Imgs"));
+                for (String itens : create.list()) {
+                    if (itens.contains(ext)) {
+                        if (itens.contains("jpg") || itens.contains("img") || itens.contains("jpeg")) {
+                            verify = new File(files.getNome_dir() + itens);
+                            boolean ok = verify.renameTo(new File(files.getNome_dir() + "Imgs/", verify.getName()));
+                            if (ok) System.out.println(itens + " movido");
+                            else System.out.println(itens + " não movido");
+                        }
+                    }
+                }
+
+            }
+
+            if (dir5.exists()) {
+                for (String itens : create.list()) {
+                    if (itens.contains(ext)) {
+                        if (itens.contains("mp4") || itens.contains("mov") || itens.contains("mv")) {
+                            verify = new File(files.getNome_dir() + itens);
+                            boolean ok = verify.renameTo(new File(files.getNome_dir() + "MP4s/", verify.getName()));
+                            if (ok) System.out.println(itens + " movido");
+                            else System.out.println(itens + " não movido");
+                        }
+                    }
+                }
+            } else {
+                System.out.println("Diretório não existente...Criando...");
+                Files.createDirectory(Paths.get(files.getNome_dir() + "MP4s"));
+                for (String itens : create.list()) {
+                    if (itens.contains(ext)) {
+                        if (itens.contains("mp4") || itens.contains("mov") || itens.contains("mv"))  {
+                            verify = new File(files.getNome_dir() + itens);
+                            boolean ok = verify.renameTo(new File(files.getNome_dir() + "MP4s/", verify.getName()));
+                            if (ok) System.out.println(itens + " movido");
+                            else System.out.println(itens + " não movido");
+                        }
+                    }
+                }
+
+            }
+
 
         }
         System.out.println("\nTudo em ordem.");
     }
 }
+
