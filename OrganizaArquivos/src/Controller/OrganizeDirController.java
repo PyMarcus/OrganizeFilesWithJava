@@ -163,7 +163,7 @@ public class OrganizeDirController {
             if (dir5.exists()) {
                 for (String itens : create.list()) {
                     if (itens.contains(ext)) {
-                        if (itens.contains("mp4") || itens.contains("mov") || itens.contains("mv")) {
+                        if (itens.contains("mp4") || itens.contains("mov") || itens.contains("mv") || itens.contains("webm")) {
                             verify = new File(files.getNome_dir() + itens);
                             boolean ok = verify.renameTo(new File(files.getNome_dir() + "MP4s/", verify.getName()));
                             if (ok) System.out.println(itens + " movido");
